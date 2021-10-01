@@ -16,9 +16,9 @@ function App() {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/users">Users</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
@@ -26,9 +26,9 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/users">
+        {/* <Route path="/users">
           <HomePage />
-        </Route>
+        </Route> */}
         <Route path="/">
           <HomePage />
         </Route>
