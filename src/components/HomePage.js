@@ -4,32 +4,18 @@ import MoviesList  from './MoviesList'
 
 
 
-const HomePage = ()=>{
+const HomePage = (props)=>{
 
-    const moviesListType ={
-        inTheaters: {
-            url: "InTheaters",
-            title:"In Theaters"
-        },
-        mostPopular: {
-            url: "MostPopularMovies",
-            title:"Most Popular Movies"
-        },
-        comingSoon:{
-            url: "ComingSoon",
-            title:"Coming Soon"
-        }
-    }
+    const moviesListType = props.moviesListType
 
 
 
 
 
     return(
-        <div className="homepage">
-            <h1 className="text-6xl text-center mb-10">Movies App</h1>
+        <div className="homepage mx-10">
             <MoviesList type={moviesListType.inTheaters}/>
-            <MoviesList type={moviesListType.mostPopular}/>
+            <MoviesList type={moviesListType.mostPopularMovies}/>
         </div>
     )
 }

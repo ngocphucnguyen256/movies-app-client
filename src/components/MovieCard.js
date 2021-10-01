@@ -9,9 +9,9 @@ const MovieCard =(...props)=>{
 
 
     return (
-        <div>
-               <img  src={props.src} alt={props.title}/>
-               <h3>{props.title}</h3> 
+        <div className="rounded-xl p-4">
+               <img  src={props.image} alt={props.title}/>
+               <h3 className="text-xl text-center">{props.title}</h3> 
         </div>
     
     )
