@@ -34,7 +34,7 @@ const MoviesList = (props) => {
         <>
           <div className="grid grid-cols-5 gap-8">
             {data.map((item, index) => (
-              <MovieCard props={item} />
+              <MovieCard key={index} props={item} />
             ))}
           </div>
         </>
