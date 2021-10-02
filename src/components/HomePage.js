@@ -14,8 +14,8 @@ const HomePage = (props)=>{
 
     return(
         <div className="homepage mx-10">
-            <MoviesList type={moviesListType.inTheaters}/>
             <MoviesList type={moviesListType.mostPopularMovies}/>
+            <MoviesList type={moviesListType.inTheaters}/>
         </div>
     )
 }

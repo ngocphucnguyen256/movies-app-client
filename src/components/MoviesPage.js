@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import env from "react-dotenv";
-import Pagination from "react-js-pagination";
+import LazyLoad from "react-lazyload";
 import MovieCard from "./MovieCard";
+import loading from '../img/loading.gif'
+
+
+const Loading = () => (
+  <div>
+    <img src={loading} alt="Loading"/>
+  </div>
+)
 
 const MoviesPage = (props) => {
   const apiUrl = env.API_URL
   const apiKey = env.API_KEY
   const [data, setData] = useState(null);
-  const [activePage, setActivePage] = useState(1)
 
   const type = props.type
 
@@ -19,7 +26,6 @@ const MoviesPage = (props) => {
       .get(`${apiUrl}${type.url}/${apiKey}`)
       .then((response) => {
         setData(response.data.items);
-        console.log(response.data.items);
       })
       .catch((error) => {
         console.log(error);
@@ -28,10 +34,6 @@ const MoviesPage = (props) => {
 
 
  
-  const handlePageChange=(pageNumber)=> {
-    console.log(`active page is ${pageNumber}`);
-    setActivePage(pageNumber)
-  }
 
 
   return (
@@ -43,18 +45,13 @@ const MoviesPage = (props) => {
         <h2>No movies available</h2>
       ) : (
         <>
-          <div className="grid grid-cols-10 gap-8">
+          <div className="grid grid-cols-7 gap-8">
             {data.map((item, index) => (
-              <MovieCard props={item} />
+                <LazyLoad key={index} placeholder={<Loading/>} height={100} offset={[-100,100]}>
+                     <MovieCard props={item} key={index}/>
+                </LazyLoad>
             ))}
           </div>
-          <Pagination
-          activePage={activePage}
-          itemsCountPerPage={50}
-          totalItemsCount={250}
-          pageRangeDisplayed={5}
-          onChange={handlePageChange}
-        />
         </>
       )}
     </div>
