@@ -3,6 +3,8 @@ import axios from "axios";
 import env from "react-dotenv";
 import MovieCard from "./MovieCard";
 import expand from "../img/expand-down.png"
+import LazyLoad from "react-lazyload";
+import Loading from './Loading'
 
 const MoviesList = (props) => {
   const apiUrl = env.API_URL
@@ -46,7 +48,9 @@ const MoviesList = (props) => {
         <>
           <div className="grid grid-cols-5 gap-8 ">
             {data.slice(0, moviesPerPage).map((item, index) => (
-              <MovieCard key={index} props={item} />
+                <LazyLoad key={index} placeholder={<Loading/>} height={100} offset={[-100,100]}>
+                    <MovieCard props={item} key={index}/>
+              </LazyLoad>
             ))}
           </div>
           <button className="absolute left-1/2 -bottom-10 w-20 p-2 h-auto transform -translate-x-1/2 " onClick={handleExpandClick}>

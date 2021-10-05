@@ -3,14 +3,7 @@ import axios from "axios";
 import env from "react-dotenv";
 import LazyLoad from "react-lazyload";
 import MovieCard from "./MovieCard";
-import loading from '../img/loading.gif'
-
-
-const Loading = () => (
-  <div>
-    <img src={loading} alt="Loading"/>
-  </div>
-)
+import Loading  from "./Loading";
 
 const MoviesPage = (props) => {
   const apiUrl = env.API_URL
