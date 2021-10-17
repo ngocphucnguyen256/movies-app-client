@@ -7,7 +7,8 @@ const WatchPage =(...props)=>{
 
 
     let data =props[0].props
-    let url = `https://vidclouds.us/${data.id}.html`
+    // let url = `https://vidclouds.us/${data.id}.html`
+    let url =`https://www.2embed.ru/embed/imdb/movie?id=${data.id}`
 
     const handleClose =()=>{
         setIsClose(!isClose)
@@ -49,3 +50,7 @@ const WatchPage =(...props)=>{
 
 
 export default WatchPage
+
+
+
+
